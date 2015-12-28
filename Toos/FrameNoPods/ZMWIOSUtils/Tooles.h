@@ -86,5 +86,4 @@
 ///点击textField的时候，上下移动View的通用方法
 +(void)animateTextField: (UITextField *)textField up: (BOOL)up viewController:(UIViewController *)tempVC;
 
-
 @end

@@ -8,6 +8,8 @@
 
 #import "Tooles.h"
 #import "UIColor+IOSUtils.h"
+#import "NSString+IOSUtils.h"
+#define SYSTEM_LIBIARY_PATH      NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0]
 
 @implementation Tooles
 
@@ -144,7 +146,36 @@
     
     tempVC.view.frame = CGRectOffset(tempVC.view.frame, 0, movement);
     [UIView commitAnimations];
+    
 }
 
+/**
+ *  获取本地路径url 或者 网络url
+ *
+ *  @param folderName 文件夹名称  本地路径的时候用，否则传 nil
+ *  @param fileName   文件名字 本地路径的时候用，否则传 nil
+ *  @param urlString  网络urlString
+ *
+ *  @return NSURL（网络或者本地）
+ */
++(NSURL *)getURLWithFolderName:(NSString *)folderName fileName:(NSString *)fileName urlString:(NSString *)urlString {
+    if ([folderName isEmptyString]) {
+        folderName = @"Cycling_Record_Road_Images";
+    }
+    
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    NSString* path = [self absolutePath:[NSString stringWithFormat:@"%@/%@.png", folderName,fileName] systemPath:SYSTEM_LIBIARY_PATH];
+    
+    if([fileManager fileExistsAtPath:path]){
+        
+        return [NSURL fileURLWithPath:path];
+    }else{
+        return [NSURL URLWithString:urlString];
+    }
+}
+
++ (NSString*)absolutePath:(NSString*)relativePath systemPath:(NSString*)systemPath{
+    return [systemPath stringByAppendingPathComponent:relativePath];
+}
 
 @end
