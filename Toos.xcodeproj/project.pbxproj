@@ -139,8 +139,6 @@
 		B2E40A4A1C2BDD87002B60B5 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		B2E40A4B1C2BDD87002B60B5 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		B2E40A4D1C2BDDCA002B60B5 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
-		B2E40A4E1C2BDDCA002B60B5 /* GlobalDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefinition.h; sourceTree = "<group>"; };
-		B2E40A4F1C2BDDCA002B60B5 /* I18NMicros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = I18NMicros.h; sourceTree = "<group>"; };
 		B2E40A511C2BDE54002B60B5 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
 		B2E40A521C2BDE54002B60B5 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
 		B2E40A551C2BDE60002B60B5 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
@@ -319,8 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				B2E40A4D1C2BDDCA002B60B5 /* APIKey.h */,
-				B2E40A4E1C2BDDCA002B60B5 /* GlobalDefinition.h */,
-				B2E40A4F1C2BDDCA002B60B5 /* I18NMicros.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";

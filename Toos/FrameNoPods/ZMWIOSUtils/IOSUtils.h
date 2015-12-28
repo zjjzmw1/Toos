@@ -6,7 +6,7 @@
 //  Copyright © 2015年 shandandan. All rights reserved.
 //
 #import "Tooles.h"                  //通用的类方法
-
+#import "IOSUtilsConfig.h"          //宏
 ///类目汇总
 #import "UIView+Utils.h"            //view的子类的类目
 #import "UIImage+IOSUtils.h"        //图片的类目

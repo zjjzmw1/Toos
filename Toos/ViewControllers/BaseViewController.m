@@ -7,28 +7,23 @@
 //
 
 #import "BaseViewController.h"
-#import "GlobalDefinition.h"
+#import "IOSUtilsConfig.h"
 #import "UIColor+IOSUtils.h"
 #import "UIView+Utils.h"
 
-//#import "ProgressHUD.h"
 
 @interface BaseViewController () {
-    UIImage *navigationBarDefaultBackgroundImage;   // 默认背景色
-    UIImage *navigationBarDefaultShadowImage;       // 默认阴影颜色
+    
 }
 
 @end
 
 @implementation BaseViewController
 
-@synthesize networkInavailableView;
-@synthesize navigationBarTransparent;
 
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self.navigationBarTransparent = NO;
     }
     return self;
 }
@@ -37,61 +32,34 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        self.title = @"";
-        self.tabBarItem.image = nil;
+
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    if (self.view) {
-        self.view.backgroundColor = [UIColor colorFromHexString:@"333436"];
-        
-        if (networkInavailableView == nil) {
-            networkInavailableView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 202, 124)];
-            networkInavailableView.backgroundColor = [UIColor clearColor];
-            UIImageView *ivTip = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 202, 124)];
-            ivTip.image = [UIImage imageNamed:@"bad_network_please_check_setting"];
-            networkInavailableView.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2-50);
-            [networkInavailableView addSubview:ivTip];
-            [self.view addSubview:networkInavailableView];
-            self.networkInavailableView.hidden = YES;
-        }
-
-//        if (_emptyView == nil) {
-//            self.emptyView = [[EmptyView alloc]initWithFrame:CGRectMake(0, self.view.top, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
-//            [self.view addSubview:self.emptyView];
-//            self.emptyView.backgroundColor = [UIColor colorFromHexString:@"#181818"];
-//            self.emptyView.hidden = YES;///暂时隐藏。
-//        }
-    }
+    self.view.backgroundColor = [UIColor colorFromHexString:@"333436"];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (navigationBarTransparent) {
-        navigationBarDefaultBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-        navigationBarDefaultShadowImage = [self.navigationController.navigationBar shadowImage];
-        //     NavigationBar 设置为透明
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                      forBarMetrics:UIBarMetricsDefault];
-        self.navigationController.navigationBar.shadowImage = [UIImage new];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (_emptyView == nil) {//尽量在后面加加入，不容易被子视图的view覆盖了
+        self.emptyView = [[EmptyView alloc]initWithFrame:CGRectMake(0, self.view.top, kScreenWidth, kScreenHeight - kNavigationBarHeight)];
+        [self.view addSubview:self.emptyView];
+        self.emptyView.backgroundColor = [UIColor colorFromHexString:@"#181818"];
+        self.emptyView.hidden = YES;///暂时隐藏。
     }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (navigationBarTransparent) {
-        // 还原NavigationBar样式
-        [self.navigationController.navigationBar setBackgroundImage:navigationBarDefaultBackgroundImage
-                                                      forBarMetrics:UIBarMetricsDefault];
-        self.navigationController.navigationBar.shadowImage = navigationBarDefaultShadowImage;
-    }
-    
-//    [ProgressHUD dismiss];
 }
 
 
