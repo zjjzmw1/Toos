@@ -14,4 +14,10 @@
 
 @property (strong, nonatomic) EmptyView *emptyView;                //没有内容的时候的view.
 
+
+
+- (void)leftButtonWithName:(NSString *)name image:(NSString *)imageString;
+
+- (void)rightButtonWithName:(NSString *)name image:(NSString *)imageString;
+
 @end

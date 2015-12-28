@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20A7CC11C318AD40011752B /* TestBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B20A7CC01C318AD40011752B /* TestBaseVC.m */; };
 		B250C1071C1C66A60028AAAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B250C1061C1C66A60028AAAC /* AppDelegate.m */; };
 		B250C1C21C1C7AB80028AAAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B250C1C11C1C7AB80028AAAC /* AVFoundation.framework */; };
 		B250C1C41C1C7B800028AAAC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B250C1C31C1C7B800028AAAC /* MediaPlayer.framework */; };
@@ -62,6 +63,8 @@
 /* Begin PBXFileReference section */
 		65884F36D0DDEB623250656D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A879EED9E57D9E577E79C174 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B20A7CBF1C318AD40011752B /* TestBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBaseVC.h; sourceTree = "<group>"; };
+		B20A7CC01C318AD40011752B /* TestBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBaseVC.m; sourceTree = "<group>"; };
 		B250C0FF1C1C66A60028AAAC /* Toos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B250C1051C1C66A60028AAAC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B250C1061C1C66A60028AAAC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				B2E40A501C2BDE54002B60B5 /* testVC */,
 				B2E40A4A1C2BDD87002B60B5 /* BaseViewController.h */,
 				B2E40A4B1C2BDD87002B60B5 /* BaseViewController.m */,
+				B20A7CBF1C318AD40011752B /* TestBaseVC.h */,
+				B20A7CC01C318AD40011752B /* TestBaseVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				B2E40A3A1C2BDD29002B60B5 /* NetworkManager.m in Sources */,
 				B2E40A411C2BDD29002B60B5 /* Tooles.m in Sources */,
 				B26D33351C2F9C8500B0D512 /* Singleton.m in Sources */,
+				B20A7CC11C318AD40011752B /* TestBaseVC.m in Sources */,
 				B2E40A441C2BDD29002B60B5 /* UIView+Utils.m in Sources */,
 				B250C1071C1C66A60028AAAC /* AppDelegate.m in Sources */,
 				B26D334F1C2FBB9100B0D512 /* UIImageView+LBBlurredImage.m in Sources */,

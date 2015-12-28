@@ -13,7 +13,7 @@
 #import <CoreLocation/CoreLocation.h>   //定位用的
 
 #import "IOSUtils.h"                    //通用的方法测试。
-
+#import "TestBaseVC.h"                  //测试跟视图
 @interface AppDelegate ()<CLLocationManagerDelegate>
 {
     CLLocationManager *_locationManager;
@@ -30,14 +30,22 @@
     self.window.backgroundColor = [UIColor blueColor];
     [self.window makeKeyAndVisible];
     
+    //测试跟视图
+    [self testBaseAction];
+    
+    
+    
     //test----ImageCache---YYCache测试
-    [self imageCacheWithYYCacthAction];
+//    [self imageCacheWithYYCacthAction];
     
     //test -----定位
 //    [self testLocationAction];
     
     //测试 IOSUtils里面的方法
 //    [self testIOSUtilsAction];
+    
+    
+    
     return YES;
 }
 
@@ -84,6 +92,12 @@
     [self.window setLongPressActionWithBlock:^{
         NSLog(@"长按了window");
     }];
+}
+#pragma mark 测试 跟视图
+-(void)testBaseAction{
+    TestBaseVC *detailVC = [[TestBaseVC alloc]init];
+    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:detailVC];
+    self.window.rootViewController = navi;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

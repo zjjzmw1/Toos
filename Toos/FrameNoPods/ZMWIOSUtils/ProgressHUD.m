@@ -7,7 +7,8 @@
 //
 
 #import "ProgressHUD.h"
-#import "GlobalDefinition.h"
+#define IS_IOS_8 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=8.0)?YES:NO
+#define kIsIPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 
 @implementation ProgressHUD
 
@@ -192,7 +193,7 @@
 //    if (orient == UIInterfaceOrientationPortraitUpsideDown)	rotate = M_PI;
 //    if (orient == UIInterfaceOrientationLandscapeLeft)		rotate = - M_PI_2;
 //    if (orient == UIInterfaceOrientationLandscapeRight)		rotate = + M_PI_2;
-    if (!IS_IOS8 && IS_IPHONE4) {
+    if (!IS_IOS_8 && kIsIPhone4) {
         if (orient == UIInterfaceOrientationPortraitUpsideDown)	rotate = M_PI;
         if (orient == UIInterfaceOrientationLandscapeLeft)		rotate = - M_PI_2;
         if (orient == UIInterfaceOrientationLandscapeRight)		rotate = + M_PI_2;
