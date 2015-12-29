@@ -20,6 +20,13 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - Masonry (0.6.3)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - RongCloudIMKit (2.3.8)
   - YYWebImage (0.9.8)
 
@@ -27,6 +34,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0.0-beta.1)
   - FMDB (~> 2.5)
   - Masonry (~> 0.6.2)
+  - ReactiveCocoa (~> 2.5)
   - RongCloudIMKit
   - YYWebImage (~> 0.9.8)
 
@@ -34,6 +42,7 @@ SPEC CHECKSUMS:
   AFNetworking: e3639f8310904c9888ddf03a2fa585633594a6e3
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RongCloudIMKit: 58feb4bce6a8b545598b872d51deab8b1264e2a3
   YYWebImage: 3f7318875fcfbe1d9608df7ee269a4c2d449963b
 

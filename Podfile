@@ -12,6 +12,8 @@ pod 'YYWebImage', '~> 0.9.8'            # YY的image框架。
 #pod 'Mapbox-iOS-SDK', '3.0.1'           # MapBox地图库
 pod 'RongCloudIMKit'                    # RongCloud SDK
 
+pod 'ReactiveCocoa', '~> 2.5'           # ReactiveCocoa
+
 #pod 'Mapbox-iOS-SDK', '~> 3.0.0'
 #—————————————暂时不用的———————————————————————
 
