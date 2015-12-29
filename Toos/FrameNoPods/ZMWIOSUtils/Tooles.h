@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>         //各种方便的block封装
 
 @interface Tooles : NSObject
 
-@property (assign, nonatomic) NSInteger count;
-
+///----------RAC用的-----------------------
+@property (assign, nonatomic) NSInteger     count;
+@property (strong, nonatomic) RACSignal     *createEnabled;
+@property (strong, nonatomic) NSString      *password;
+@property (strong, nonatomic) NSString      *passwordConfirm;
+@property (strong, nonatomic) UIButton      *button;
+@property (strong, nonatomic) UITextField   *textField;
+///-----------上面是RAC用的----------------------------
 /**
  *  用法：
  

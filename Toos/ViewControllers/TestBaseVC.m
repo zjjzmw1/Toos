@@ -10,6 +10,7 @@
 #import "IOSUtils.h"
 
 #import "SecondViewController.h"
+#import "MyReactiveCocoaViewController.h"       //学习RectiveCocoa的demo
 @implementation TestBaseVC
 
 - (void)viewDidLoad {
@@ -20,12 +21,12 @@
     [self leftButtonWithName:@"返回" image:nil];
     [self rightButtonWithName:@"编辑" image:nil];
     
-    [self nextBackTitle:@""];
+//    [self nextBackTitle:@""];
     
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    SecondViewController *detailVC = [[SecondViewController alloc]init];
+    MyReactiveCocoaViewController *detailVC = [[MyReactiveCocoaViewController alloc]init];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

@@ -103,4 +103,10 @@
  */
 +(NSString *)getCurrentTimeString;
 
+/**
+ *  判断邮箱是否可用
+ *
+ *  @return
+ */
+- (BOOL)isValidEmail;
 @end

@@ -9,7 +9,6 @@
 #import "Tooles.h"
 #import "UIColor+IOSUtils.h"
 #import "NSString+IOSUtils.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>         //各种方便的block封装
 
 #define SYSTEM_LIBIARY_PATH      NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0]
 
@@ -116,7 +115,11 @@
     button.frame = frame;
     [button setBackgroundColor:[UIColor clearColor]];
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorFromHexString:titleColor] forState:UIControlStateNormal];
+    if ([titleColor isEmptyString]) {
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        [button setTitleColor:[UIColor colorFromHexString:titleColor] forState:UIControlStateNormal];
+    }
     button.titleLabel.font = [UIFont systemFontOfSize:16];
     if (titleSize > 0) {
         button.titleLabel.font = [UIFont systemFontOfSize:titleSize];
@@ -223,15 +226,15 @@
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
     }];
-    
-    //------------------------------------监听某个类的某个属性的变化-----------------------------
-    //    [RACObserve([ClubMessageManager defaultManager], hasUnreadFriendShare) subscribeNext:^(id x) {
-    [RACObserve(self, count) subscribeNext:^(id x) {
-        if ([x integerValue] == 0) {
-            
-        }else if ([x integerValue] > 100){
-            
+    //点击事件拦截。
+    [[[button rac_signalForControlEvents:UIControlEventTouchUpInside]filter:^BOOL(UIButton *button) {
+        if ([button.currentTitle isEqualToString:@"sd"]) {
+            return YES;
+        }else{
+            return NO;
         }
+    }]subscribeNext:^(id x) {
+        NSLog(@"点击事件");
     }];
     //------------------------------------segmentedControl-----------------------------
     UISegmentedControl *segmentedControl;
@@ -240,7 +243,109 @@
         
     }];
     
+    //----------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
+//    RAC() 可以将Signal发出事件的值赋值给某个对象的某个属性，其参数为对象名和属性名
+//    RACObserve() 参数为对象名和属性名，新建一个Signal并对对象的属性的值进行观察，当值变化时Signal会发出事件
+    //某个属性一发生变化就执行。
+    [RACObserve(self, count) subscribeNext:^(id x) {
+        if ([x integerValue] == 0) {
+            
+        }else if ([x integerValue] > 100){
+            
+        }
+    }];
+    //某个属性满足一定条件才执行。
+    [[RACObserve(self, count) filter:^BOOL(id count) {
+        if ([count integerValue] == 5) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }]subscribeNext:^(id count) {
+        NSLog(@"数量为===%@",count);//当上面return 才执行这句.
+    }];
+    //返回Bool赋值给createEnabled
+    RAC(self, createEnabled) = [RACSignal combineLatest:@[RACObserve(self, password),RACObserve(self, passwordConfirm)] reduce:^(NSString *pwd,NSString *pwdConfirm) {
+        return @([pwd isEqualToString:pwdConfirm]);
+    }];
+    
+    self.button.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
+        NSLog(@"按钮点击了。");
+//        [RACSignal return:@(6)];
+        return [RACSignal empty];
+    }];
+    
+    
+    RACSignal *backgrountColorSignal = [self.textField.rac_textSignal map:^id(NSString *text) {
+        if ([text isEmptyString]) {
+            return [UIColor whiteColor];
+        }else{
+            return [UIColor greenColor];
+        }
+    }];
+    RACDisposable *subscription = [backgrountColorSignal subscribeNext:^(UIColor *color) {
+        self.textField.backgroundColor = color;
+    }];
+    [[backgrountColorSignal map:^id(UIColor *color) {
+        if ([color isEqual:[UIColor whiteColor]]) {
+            return [UIColor whiteColor];
+        }else{
+            return [UIColor greenColor];
+        }
+    }]subscribeNext:^(UIColor *color) {
+        self.textField.backgroundColor = color;
+    }];
+    
+    
+    //根据 textField 的text 变化，更改方法。
+    [[self.textField.rac_textSignal map:^id(NSString *text) {
+        if ([text isEmptyString]) {
+            return [UIColor whiteColor];
+        }else{
+            return [UIColor yellowColor];
+        }
+    }]subscribeNext:^(UIColor *color) {
+        self.textField.backgroundColor = color;
+    }];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end
