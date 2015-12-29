@@ -70,8 +70,10 @@
     [button setFrame:CGRectMake(0, 0, 70, 44)];
 //    button.backgroundColor = [UIColor blueColor];
     if (![imageString isEmptyString]) {
-        [button setImage:[UIImage imageNamed:@"navigator_btn_back"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"navigator_btn_back"] forState:UIControlStateHighlighted];
+//        [button setImage:[UIImage imageNamed:@"navigator_btn_back"] forState:UIControlStateNormal];
+//        [button setImage:[UIImage imageNamed:@"navigator_btn_back"] forState:UIControlStateHighlighted];
+        [button setImage:[UIImage imageNamed:imageString] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:imageString] forState:UIControlStateHighlighted];
     }
     
     [button setTitle:name forState:UIControlStateNormal];
@@ -125,7 +127,14 @@
     button.titleLabel.font = [UIFont systemFontOfSize:16];//可以用。
 }
 
-
+#pragma mark - 下个页面的返回按钮的文字 
+-(void)nextBackTitle:(NSString *)title{
+    UIBarButtonItem *nextPageButtonItem = [[UIBarButtonItem alloc] init];
+    nextPageButtonItem.title = title;
+//    [[UINavigationBar appearance] setTintColor:[UIColor yellowColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    self.navigationItem.backBarButtonItem = nextPageButtonItem;
+}
 
 #pragma mark - 下面是准备写下常用的 rac 的方法的demo
 

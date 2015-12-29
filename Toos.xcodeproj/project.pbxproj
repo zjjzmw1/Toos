@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B20A7CC11C318AD40011752B /* TestBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B20A7CC01C318AD40011752B /* TestBaseVC.m */; };
+		B20A7CC41C3227890011752B /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20A7CC31C3227890011752B /* SecondViewController.m */; };
 		B250C1071C1C66A60028AAAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B250C1061C1C66A60028AAAC /* AppDelegate.m */; };
 		B250C1C21C1C7AB80028AAAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B250C1C11C1C7AB80028AAAC /* AVFoundation.framework */; };
 		B250C1C41C1C7B800028AAAC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B250C1C31C1C7B800028AAAC /* MediaPlayer.framework */; };
@@ -65,6 +66,8 @@
 		A879EED9E57D9E577E79C174 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B20A7CBF1C318AD40011752B /* TestBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBaseVC.h; sourceTree = "<group>"; };
 		B20A7CC01C318AD40011752B /* TestBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBaseVC.m; sourceTree = "<group>"; };
+		B20A7CC21C3227890011752B /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		B20A7CC31C3227890011752B /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		B250C0FF1C1C66A60028AAAC /* Toos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B250C1051C1C66A60028AAAC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B250C1061C1C66A60028AAAC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				B2E40A4B1C2BDD87002B60B5 /* BaseViewController.m */,
 				B20A7CBF1C318AD40011752B /* TestBaseVC.h */,
 				B20A7CC01C318AD40011752B /* TestBaseVC.m */,
+				B20A7CC21C3227890011752B /* SecondViewController.h */,
+				B20A7CC31C3227890011752B /* SecondViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				B20A7CC11C318AD40011752B /* TestBaseVC.m in Sources */,
 				B2E40A441C2BDD29002B60B5 /* UIView+Utils.m in Sources */,
 				B250C1071C1C66A60028AAAC /* AppDelegate.m in Sources */,
+				B20A7CC41C3227890011752B /* SecondViewController.m in Sources */,
 				B26D334F1C2FBB9100B0D512 /* UIImageView+LBBlurredImage.m in Sources */,
 				B26D33491C2FBADA00B0D512 /* MCSegmentedControl.m in Sources */,
 			);

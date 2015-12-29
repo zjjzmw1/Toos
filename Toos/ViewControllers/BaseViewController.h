@@ -20,4 +20,9 @@
 
 - (void)rightButtonWithName:(NSString *)name image:(NSString *)imageString;
 
+-(void)leftAction:(UIButton *)button;
+-(void)rightAction:(UIButton *)button;
+
+#pragma mark - 下个页面的返回按钮的文字
+-(void)nextBackTitle:(NSString *)title;
 @end
