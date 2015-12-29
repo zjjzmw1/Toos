@@ -11,6 +11,8 @@
 
 @interface Tooles : NSObject
 
+@property (assign, nonatomic) NSInteger count;
+
 /**
  *  用法：
  

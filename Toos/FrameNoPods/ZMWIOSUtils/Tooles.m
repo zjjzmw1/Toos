@@ -9,6 +9,8 @@
 #import "Tooles.h"
 #import "UIColor+IOSUtils.h"
 #import "NSString+IOSUtils.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>         //各种方便的block封装
+
 #define SYSTEM_LIBIARY_PATH      NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0]
 
 @implementation Tooles
@@ -177,5 +179,68 @@
 + (NSString*)absolutePath:(NSString*)relativePath systemPath:(NSString*)systemPath{
     return [systemPath stringByAppendingPathComponent:relativePath];
 }
+
+#pragma mark - 各种方便的block封装  ReactiveCocoa
+-(void)reactiveCocoaAction{
+//    __weak typeof(self) wSelf = self;
+    //------------------------------------通知监听----------------------------------------
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"log_out" object:nil] subscribeNext:^(id x) {
+        //        NSNotification* notification = (NSNotification*)x;
+        //        int unreadClubMsgCount = 0;
+        //        if (notification.object) {
+        //            unreadClubMsgCount = [notification.object intValue];
+        //        }
+        //退出登录的通知。---"log_out"是自定义的
+    }];
+    
+    //退出登录后执行。。。。上面的通知方法就可以触发了。
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"log_out" object:nil];
+    
+    //------------------------------------UITextField输入限制-----------------------------
+    UITextField *textField;//自己写初始化
+    [textField.rac_textSignal subscribeNext:^(NSString* text) {
+        if(text.length > 12){
+            textField.text = [text substringToIndex:12];
+        }
+    }];
+    //------------------------------------UIAlertView,UIActionSheet点击方法-----------------------------
+    UIAlertView *alertView;//自己写初始化
+    [[alertView rac_buttonClickedSignal] subscribeNext:^(id x) {
+        if ([x integerValue] == 1) {//alert的按钮
+            
+        }
+    }];
+    [alertView show];
+    UIActionSheet* actionSheet ;
+    [[actionSheet rac_buttonClickedSignal] subscribeNext:^(id x) {
+        if ([x integerValue] == 1) {//actionSheet的按钮
+            
+        }
+    }];
+//    [actionSheet showInView:self.view];
+    //------------------------------------UIButton点击方法-----------------------------
+    UIButton *button;//自己写初始化
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+    }];
+    
+    //------------------------------------监听某个类的某个属性的变化-----------------------------
+    //    [RACObserve([ClubMessageManager defaultManager], hasUnreadFriendShare) subscribeNext:^(id x) {
+    [RACObserve(self, count) subscribeNext:^(id x) {
+        if ([x integerValue] == 0) {
+            
+        }else if ([x integerValue] > 100){
+            
+        }
+    }];
+    //------------------------------------segmentedControl-----------------------------
+    UISegmentedControl *segmentedControl;
+    [[segmentedControl rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+        
+        
+    }];
+    
+}
+
 
 @end
