@@ -38,8 +38,9 @@
     [self addViews];
     [self defineLayout];
     [self bindWithViewModel];
+    
+    
 }
-
 #pragma mark -
 
 - (void)addViews {
@@ -101,8 +102,6 @@
     }]subscribeNext:^(id x) {
          NSLog(@"点击事件");
     }];
-    
-   //filter      map              等方法，多看看。
     //RACObserve 是监听属性变化。
     //RAC 是给属性赋值。
     
