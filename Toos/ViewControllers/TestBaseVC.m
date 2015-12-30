@@ -19,14 +19,19 @@
     self.title = @"首页";
     
     [self leftButtonWithName:@"返回" image:nil];
-    [self rightButtonWithName:@"编辑" image:nil];
-    
-//    [self nextBackTitle:@""];
-    
+    [self rightButtonWithName:@"提交" image:nil block:nil];
+//    [self rightButtonWithName:@"提交" image:nil block:^(UIButton *btn) {
+//        SecondViewController *detailVC = [[SecondViewController alloc]init];
+//        [self.navigationController pushViewController:detailVC animated:YES];
+//    }];
+
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    MyReactiveCocoaViewController *detailVC = [[MyReactiveCocoaViewController alloc]init];
+//    MyReactiveCocoaViewController *detailVC = [[MyReactiveCocoaViewController alloc]init];
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    SecondViewController *detailVC = [[SecondViewController alloc]init];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

@@ -16,8 +16,15 @@
     self.title = @"第二个页面";
     
 //    [self leftButtonWithName:@"返回1" image:nil];
-    [self rightButtonWithName:@"编辑" image:nil];
-//    [self nextBackTitle:@""];
+    [self rightButtonWithName:@"编辑" image:nil block:^(UIButton *btn) {
+        if ([btn.currentTitle isEqualToString:@"编辑"]) {
+            [btn setTitle:@"删除" forState:UIControlStateNormal];
+        }else{
+            [btn setTitle:@"编辑" forState:UIControlStateNormal];
+        }
+    }];
+    
+    //    [self nextBackTitle:@""];
     
     
 }

@@ -11,6 +11,7 @@
 #import "UIColor+IOSUtils.h"
 #import "UIView+Utils.h"
 #import "NSString+IOSUtils.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface BaseViewController () {
     
@@ -98,7 +99,7 @@
 }
 
 #pragma mark - 左边的按钮
-- (void)rightButtonWithName:(NSString *)name image:(NSString *)imageString{
+- (void)rightButtonWithName:(NSString *)name image:(NSString *)imageString block:(void(^)(UIButton *btn))block{
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0, 0, 70, 44)];
 //    button.backgroundColor = [UIColor blueColor];
@@ -109,25 +110,34 @@
     }
     
     [button setTitle:name forState:UIControlStateNormal];
-    [button setTitle:name forState:UIControlStateHighlighted];
+//    [button setTitle:name forState:UIControlStateHighlighted];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     button.titleLabel.font = [UIFont systemFontOfSize:16];
-    
-    [button addTarget:self action:@selector(rightAction:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = rightItem;
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -18;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, rightItem];
+   
+    if (block == nil) {
+        return;
+    }
+    
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *btn) {
+        block(button);
+    }];
+   
+    //传统的封装按钮的点击事件
+    //    [button addTarget:self action:@selector(rightAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark 左边按钮的点击方法
--(void)rightAction:(UIButton *)button {
-    button.titleLabel.font = [UIFont systemFontOfSize:16];//可以用。
+-(void)rightAction:(UIButton *)button{
+    
 }
 
-#pragma mark - 下个页面的返回按钮的文字 
+#pragma mark - 下个页面的返回按钮的文字
 -(void)nextBackTitle:(NSString *)title{
     UIBarButtonItem *nextPageButtonItem = [[UIBarButtonItem alloc] init];
     nextPageButtonItem.title = title;

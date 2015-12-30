@@ -18,7 +18,7 @@
 
 - (void)leftButtonWithName:(NSString *)name image:(NSString *)imageString;
 
-- (void)rightButtonWithName:(NSString *)name image:(NSString *)imageString;
+- (void)rightButtonWithName:(NSString *)name image:(NSString *)imageString block:(void(^)(UIButton *btn))block;
 
 -(void)leftAction:(UIButton *)button;
 -(void)rightAction:(UIButton *)button;
